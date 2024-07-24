@@ -5,7 +5,7 @@ const mongoose = require('mongoose'); //import mongoose package to create schema
 const applicationSchema = new mongoose.Schema({
     name: {type: String, required: true},
     description: {type: String, required: true}, 
-    users: [String], 
+    users: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}], 
 }); 
 
 module.exports = mongoose.model('Application', applicationSchema); //export the schema as a model 
