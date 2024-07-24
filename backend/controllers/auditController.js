@@ -1,7 +1,7 @@
 // cs361courseproject / backend / controllers / auditController.js
 
 const Audit = require('../models/audit'); // import Audit model from models folder 
-const User = require('../models/user'); // import User model from models folder 
+const User = require('../models/users'); // import User model from models folder 
 
 exports.createAudit = async (req, res, next) => { // function to create a new audit 
     try { // try block to catch any errors 

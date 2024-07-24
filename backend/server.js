@@ -14,18 +14,15 @@ const orgChartRoutes = require('./routes/orgchartRoutes'); // import org chart r
 dotenv.config(); // get environment variables
 
 const app = express(); // create express app
-const port = process.env.PORT || config.get('port'); // get port from environment variable or config file
+const port = process.env.PORT || config.get('port') || 5050; // get port from environment variable or config file
 
 // Middleware
 app.use(express.json()); 
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, { // connect to MongoDB using environment variable MONGO_URI 
-    useNewUrlParser: true, // use new parser for mongoose connection to MongoDB
-    useUnifiedTopology: true, // use unified topology for mongoose connection to MongoDB 
-}).then(() => { // if connected to MongoDB
-    console.log('Connected to MongoDB'); // log that we are connected to MongoDB
-}).catch(err => console.log(err)); // log any errors connecting to MongoDB
+mongoose.connect(config.get('mongoURI')) // connect to MongoDB
+    .then(() => console.log('Connected to MongoDB')) // log that the connection was successful
+    .catch(err => console.log(err)); // log any errors
 
 // Routes
 app.use('/api/users', userRoutes); // use user routes for /api/users
