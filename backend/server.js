@@ -1,3 +1,6 @@
+// cs361courseproject / backend / server.js
+
+const config = require('config'); // import config
 const express = require('express'); // import express
 const mongoose = require('mongoose'); // import mongoose
 const dotenv = require('dotenv'); // import dotenv
@@ -11,7 +14,7 @@ const orgChartRoutes = require('./routes/orgchartRoutes'); // import org chart r
 dotenv.config(); // get environment variables
 
 const app = express(); // create express app
-const port = process.env.PORT || 5000; // set port
+const port = process.env.PORT || config.get('port'); // get port from environment variable or config file
 
 // Middleware
 app.use(express.json()); 
