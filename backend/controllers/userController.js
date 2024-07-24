@@ -1,6 +1,6 @@
 // cs361courseproject / backend / controllers / userController.js
 
-const User = require('../models/user'); //import User model from models folder
+const User = require('../models/users'); //import User model from models folder
 
 exports.createUser = async (req, res, next) => { //function to create a new user 
     try {  //try block to catch any errors 
