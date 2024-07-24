@@ -7,6 +7,7 @@ const orgChartSchema = new mongoose.Schema({ //create schema for orgChart collec
     managerId: { type: String, required: true}, 
     employeeName: { type: String, required: true },
     title: { type: String, required: true },
+    team: { type: String, required: true },
 }); 
 
 module.exports = mongoose.model('orgChart', orgChartSchema); //export orgChart schema as a model to be used in other files
