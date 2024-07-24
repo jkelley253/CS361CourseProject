@@ -4,6 +4,8 @@ const dotenv = require('dotenv'); // import dotenv
 const errorHandler = require('./middlewares/errorHandler'); // import error handler
 const userRoutes = require('./routes/userRoutes'); // import user routes
 const applicationRoutes = require('./routes/applicationRoutes'); // import application routes
+const auditRoutes = require('./routes/auditRoutes'); // import audit routes
+
 
 dotenv.config(); // get environment variables
 
@@ -24,6 +26,7 @@ mongoose.connect(process.env.MONGO_URI, { // connect to MongoDB using environmen
 // Routes
 app.use('/api/users', userRoutes); // use user routes for /api/users
 app.use('/api/applications', applicationRoutes); // use application routes for /api/applications 
+app.use('/api/audits', auditRoutes); // use audit routes for /api/audits
 
 // root route
 app.get('/', (req, res) => { // get request for the root route
