@@ -1,0 +1,8 @@
+# cs361courseproject / backend / .gitignore
+
+
+# node modules 
+node_modules
+
+# .env file
+.env
