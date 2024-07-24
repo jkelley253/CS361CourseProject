@@ -5,6 +5,7 @@ const errorHandler = require('./middlewares/errorHandler'); // import error hand
 const userRoutes = require('./routes/userRoutes'); // import user routes
 const applicationRoutes = require('./routes/applicationRoutes'); // import application routes
 const auditRoutes = require('./routes/auditRoutes'); // import audit routes
+const orgChartRoutes = require('./routes/orgchartRoutes'); // import org chart routes
 
 
 dotenv.config(); // get environment variables
@@ -27,6 +28,7 @@ mongoose.connect(process.env.MONGO_URI, { // connect to MongoDB using environmen
 app.use('/api/users', userRoutes); // use user routes for /api/users
 app.use('/api/applications', applicationRoutes); // use application routes for /api/applications 
 app.use('/api/audits', auditRoutes); // use audit routes for /api/audits
+app.use('/api/orgchart', orgChartRoutes); // use org chart routes for /api/orgchart
 
 // root route
 app.get('/', (req, res) => { // get request for the root route
