@@ -2,7 +2,7 @@
 
 import React from 'react'; // import react module from react library 
 import Navbar from './Navbar'; // import Navbar component from Navbar.js file 
-import '../assets/styles/style.css'; // import style.css file from assets/styles folder 
+import '../assets/styles/home.css'; // import style.css file from assets/styles folder 
 
 function Home() { // define Home component 
     return ( // return the following content 
