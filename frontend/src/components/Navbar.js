@@ -1,10 +1,16 @@
 // cs361courseproject / frontend / src / components / Navbar.js
 
 import React from 'react'; // import react module from react library
-import { NavLink } from 'react-router-dom'; // import NavLink module from react-router-dom library
-import '../assets/styles/style.css'; // import style.css file from assets/styles folder
+import { NavLink, useNavigate } from 'react-router-dom'; // import NavLink module from react-router-dom library
+import '../assets/styles/navbar.css'; // import style.css file from assets/styles folder
 
-function Navbar() { // define Navbar component 
+function Navbar() {
+    const navigate = useNavigate(); // Use navigate function from react-router-dom
+
+    const handleLogout = () => {
+        navigate('/login'); // Navigate to login page
+    };
+
     return ( 
         <nav className="navbar"> 
             <div className="nav-links">
@@ -14,7 +20,7 @@ function Navbar() { // define Navbar component
                 <NavLink to="/org-chart" className="nav-link" activeClassName="active-link">Org Chart</NavLink>
             </div>
             <div className="nav-right">
-                <button className="logout-button">Logout</button>
+                <button onClick={handleLogout} className="logout-button">Logout</button>
             </div>
         </nav>
     );

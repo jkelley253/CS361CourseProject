@@ -1,16 +1,4 @@
-/* cs361courseproject/ frontend/ src/ assets/ styles/ style.css */
-
-/* body tag for the entire page */
-body { 
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f44336;
-}
+/* cs361courseproject/ frontend/ src/ assets/ styles/ navbar.css */
 
 /* navbar for the entire page */
 .navbar {
@@ -65,37 +53,4 @@ body {
 /* logout button hover for the navbar */
 .logout-button:hover {
     background-color: #d32f2f;
-}
-
-/* home container for the home page */
-.home-container {
-    display: flex; 
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    text-align: center;
-}
-
-/* welcome message for the home page */
-.welcome-message {
-    text-align: center;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-}
-/* welcome message for the home page */
-.welcome-message h1 {
-    margin-top: 200px;
-}
-
-.bottom-instructions {
-    margin-top: auto;
-    padding-bottom: 20px;
-}
-
-/* welcome message for the home page */
-.bottom-instructions p {
-    margin: 10px 0;
 }
