@@ -16,6 +16,7 @@
 
 
 # commands used for frontend
+## currently having to use vode -v 16
 
 1. npx create-react-app frontend
 2. npm install react-router-dom
