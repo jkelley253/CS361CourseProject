@@ -1,0 +1,101 @@
+/* cs361courseproject/ frontend/ src/ assets/ styles/ style.css */
+
+/* body tag for the entire page */
+body { 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f44336;
+}
+
+/* navbar for the entire page */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    width: 99%;
+}
+
+/* nav links for the navbar */
+.nav-links { 
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+}
+
+/* navlink for the navbar */
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px; 
+    text-align: center;
+    white-space: nowrap;
+    margin-right: 15px;
+}
+
+/* active link for the navbar */
+.active-link {
+    font-weight: bold;
+    border-bottom: 2px solid white;
+}
+
+/* nav right for the navbar */
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+/* logout button for the navbar */
+.logout-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* logout button hover for the navbar */
+.logout-button:hover {
+    background-color: #d32f2f;
+}
+
+/* home container for the home page */
+.home-container {
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+}
+
+/* welcome message for the home page */
+.welcome-message {
+    text-align: center;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+}
+/* welcome message for the home page */
+.welcome-message h1 {
+    margin-top: 200px;
+}
+
+.bottom-instructions {
+    margin-top: auto;
+    padding-bottom: 20px;
+}
+
+/* welcome message for the home page */
+.bottom-instructions p {
+    margin: 10px 0;
+}
