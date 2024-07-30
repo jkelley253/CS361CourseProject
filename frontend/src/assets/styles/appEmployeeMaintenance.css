@@ -1,0 +1,98 @@
+/* CS361courseproject/ frontend/ src/ assets/ styles/ appEmployeeMaintenance.css */
+
+.maintenance-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.maintenance-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.home-button, .submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.submit-button {
+    background-color: #28a745;
+}
+
+.home-button:hover, .submit-button:hover {
+    opacity: 0.8;
+}
+
+.search-container {
+    margin: 20px 0;
+}
+
+.search-container input {
+    padding: 10px;
+    font-size: 16px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.app-results, .employee-results {
+    margin: 20px 0;
+    width: 100%;
+    max-width: 600px;
+    text-align: left;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.group-app-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.group-app-section div {
+    width: 45%;
+}
+
+.group-app-section h3 {
+    margin-bottom: 10px;
+}
+
+.group-app-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.maintenance-footer {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #555;
+}

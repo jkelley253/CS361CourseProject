@@ -6,6 +6,7 @@ import Home from './components/Home'; // import Home component from Home.js file
 import Login from './components/Login'; // import Login component from Login.js file
 import Onboarding from './components/Onboarding'; // import Onboarding component from Onboarding.js file
 import Offboarding from './components/Offboarding'; // import Offboarding component from Offboarding.js file
+import AppEmployeeMaintenance from './components/AppEmployeeMaintenance';
 
 function App() { // define App component 
   console.log("app component rendered"); // log message to console
@@ -17,6 +18,7 @@ function App() { // define App component
       <Route path="/home" element={<Home />} /> {/* Route to Home component */}
       <Route path="/onboarding" element={<Onboarding />} /> {/* Route to Onboarding component */}
       <Route path="/offboarding" element={<Offboarding />} /> {/* Route to Offboarding component */}
+      <Route path="/appEmployeeMaintenance" element={<AppEmployeeMaintenance />} /> {/* Route to AppEmployeeMaintenance component */}
         {/* Add routes for other components like Onboarding, Offboarding, etc. */}
       </Routes> {/* End of Routes component */}
     </Router> // End of Router component
