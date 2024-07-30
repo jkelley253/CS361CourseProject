@@ -16,7 +16,7 @@ function Navbar() {
             <div className="nav-links">
                 <NavLink to="/onboarding" className="nav-link" activeClassName="active-link">Onboarding</NavLink>
                 <NavLink to="/offboarding" className="nav-link" activeClassName="active-link">Off-Boarding</NavLink>
-                <NavLink to="/app-employee-maintenance" className="nav-link" activeClassName="active-link">App/Employee Maintenance</NavLink>
+                <NavLink to="/appEmployeeMaintenance" className="nav-link" activeClassName="active-link">App/Employee Maintenance</NavLink>
                 <NavLink to="/org-chart" className="nav-link" activeClassName="active-link">Org Chart</NavLink>
             </div>
             <div className="nav-right">
