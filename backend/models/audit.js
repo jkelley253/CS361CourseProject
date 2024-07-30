@@ -3,7 +3,7 @@
 const mongoose = require('mongoose'); 
 
 const auditSchema = new mongoose.Schema({ 
-    userID: {type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, 
+    userID: {type: String, ref: "User", required: true }, 
     action: {type: String, required: true },
     timestamp: {type: Date, required: true, default: Date.now }, 
 }); 

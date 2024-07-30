@@ -1,6 +1,7 @@
 // cs361courseproject / backend / controllers / userController.js
 
 const User = require('../models/users'); 
+const logger = require('../utils/logger');
 
 exports.createUser = async (req, res, next) => { 
     try {  
@@ -9,7 +10,7 @@ exports.createUser = async (req, res, next) => {
         const savedUser = await newUser.save(); 
         res.status(201).json(savedUser); 
     } catch (err) { 
-        logger.error(`Error creating user: ${error.message}`); 
+        logger.error(`Error creating user: ${err.message}`); 
         next(err); 
     }
 };
@@ -62,17 +63,16 @@ exports.deleteUser = async (req, res, next) => {
 // Function to onboard a new employee
 exports.onboardEmployee = async (req, res, next) => {
     try {
-        const { name, email, title, team, manager, groups, additionalAppAccess } = req.body;
+        const { firstName, lastName, email, title, team, manager, groups, apps } = req.body;
 
-      // Check if all required fields are present
-        if (!name || !email || !title || !team || !manager) {
+        if (!firstName || !lastName || !email || !title || !team || !manager) {
             return res.status(400).json({ message: 'All required fields must be filled out' });
         }
 
-        const newEmployee = new User({ name, email, title, team, manager, groups, additionalAppAccess });
+        const newEmployee = new User({ firstName, lastName, email, title, team, manager, groups, apps });
         const savedEmployee = await newEmployee.save();
         res.status(201).json(savedEmployee);
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     }
 };

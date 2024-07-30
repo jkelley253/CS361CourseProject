@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const applicationSchema = new mongoose.Schema({
     name: {type: String, required: true},
     description: {type: String, required: true}, 
-    users: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}], 
+    users: [{type: String, ref: 'User'}], 
 }); 
 
 module.exports = mongoose.model('Application', applicationSchema); 

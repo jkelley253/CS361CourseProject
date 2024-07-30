@@ -10,7 +10,13 @@ router.post('/', auditController.createAudit);
 // Get all audits
 router.get('/', auditController.getAudits);
 
-// Search for inactive users based on date range
+// Get inactive users based on audit data (requires query params)
 router.get('/inactive', auditController.getInactiveUsers);
 
-module.exports = router; 
+// Update an audit (if modification is allowed)
+router.put('/:id', auditController.updateAudit);
+
+// Delete an audit
+router.delete('/:id', auditController.deleteAudit);
+
+module.exports = router;
