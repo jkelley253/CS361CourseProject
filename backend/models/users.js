@@ -14,4 +14,6 @@ const userSchema = new mongoose.Schema({ //create a new mongoose schema for the 
     title: { type: String, required: true  },
 });
 
-module.exports = mongoose.model('User', userSchema); //export the model
+const User = mongoose.model('User', userSchema); //create a new mongoose model for the user schema
+
+module.exports = User; //export the User model to be used in other files

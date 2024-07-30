@@ -7,6 +7,9 @@ const router = express.Router(); //create a new router
 // Create a new user
 router.post('/', userController.createUser);
 
+// Onboard a new employee (specific to employee data and onboarding process)
+router.post('/api/users', userController.onboardEmployee);
+
 // Get all users
 router.get('/', userController.getUsers);
 
