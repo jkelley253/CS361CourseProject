@@ -37,7 +37,6 @@ function AppEmployeeMaintenance() {
     const handleSubmit = () => {
         console.log("Submit clicked");
         if (window.confirm("Are you sure you want to make these changes? This will take effect immediately after submission, and users will no longer have access.")) {
-        // Submit changes logic
             console.log('Changes submitted');
             navigate('/home');
         }

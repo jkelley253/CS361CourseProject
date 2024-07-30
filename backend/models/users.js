@@ -1,8 +1,8 @@
 // cs361courseproject / backend / models / users.js
 
-const mongoose = require('mongoose'); //import mongoose
+const mongoose = require('mongoose'); 
 
-const userSchema = new mongoose.Schema({ //create a new mongoose schema for the user model 
+const userSchema = new mongoose.Schema({ 
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
@@ -14,6 +14,6 @@ const userSchema = new mongoose.Schema({ //create a new mongoose schema for the 
     title: { type: String, required: true  },
 });
 
-const User = mongoose.model('User', userSchema); //create a new mongoose model for the user schema
+const User = mongoose.model('User', userSchema); 
 
-module.exports = User; //export the User model to be used in other files
+module.exports = User; 

@@ -1,8 +1,8 @@
 // cs361courseproject / backend / routes / applicationRoutes.js
 
-const express = require('express'); //import express package to create routes
-const applicationController = require('../controllers/applicationController'); //import application model to use in routes
-const router = express.Router(); //create router object to define routes 
+const express = require('express'); 
+const applicationController = require('../controllers/applicationController'); 
+const router = express.Router(); 
 
 // Create a new application
 router.post('/', applicationController.createApplication);
@@ -19,4 +19,4 @@ router.put('/:id', applicationController.updateApplication);
 // Delete an application
 router.delete('/:id', applicationController.deleteApplication);
 
-module.exports = router; //export the router object to use in the server file 
+module.exports = router; 
