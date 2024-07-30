@@ -9,20 +9,27 @@ const userRoutes = require('./routes/userRoutes');
 const applicationRoutes = require('./routes/applicationRoutes'); 
 const auditRoutes = require('./routes/auditRoutes'); 
 const orgChartRoutes = require('./routes/orgchartRoutes'); 
+const { error } = require('winston');
 
 
 dotenv.config(); 
 
 const app = express(); 
 const port = process.env.PORT || config.get('port') || 5050; 
-
-// Middleware
-app.use(express.json()); 
-
 // Connect to MongoDB
+const mongoURI = process.env.MONGO_URI || config.get('mongoURI');
+
 mongoose.connect(config.get('mongoURI')) 
     .then(() => console.log('Connected to MongoDB')) 
-    .catch(err => console.log(err)); 
+    .catch(err => {
+        console.log('Error connecting to MongoDB', err);
+        process.exit(1);
+    });
+
+// Middleware
+app.use(errorHandler); 
+
+
 
 // Routes
 app.use('/api/users', userRoutes); 
