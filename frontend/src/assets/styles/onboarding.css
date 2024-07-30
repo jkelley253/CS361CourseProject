@@ -1,6 +1,6 @@
 /* cs361courseproject / frontend / src / assets / styles / onboarding.css */
 
-/* src/assets/styles/Onboarding.css */
+
 .onboarding-container {
     display: flex;
     flex-direction: column;
@@ -60,12 +60,12 @@
 
 .checkbox-container {
     display: flex;
-    justify-content: space-between; /* Arrange groups side by side */
+    justify-content: space-between; 
     margin-top: 20px;
 }
 
 .checkbox-group {
-    width: 48%; /* Take half of the available space */
+    width: 48%; 
 }
 
 .checkbox-group h3 {

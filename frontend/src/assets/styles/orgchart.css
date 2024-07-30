@@ -1,0 +1,95 @@
+/* cs361courseproject/ frontend/ src/ assets/ styles/ OrgChart.css */
+.orgchart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.orgchart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.home-button, .reset-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.reset-button {
+    background-color: #ff4500;
+}
+
+.home-button:hover, .reset-button:hover {
+    opacity: 0.8;
+}
+
+.search-container {
+    margin: 20px 0;
+}
+
+.search-container input {
+    padding: 10px;
+    font-size: 16px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.orgchart-display {
+    width: 100%;
+    max-width: 600px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.manager-section {
+    margin-bottom: 20px;
+}
+
+.manager-section h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.manager-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.manager-section ul li {
+    background-color: #f1f1f1;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.orgchart-footer {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #555;
+}

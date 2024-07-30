@@ -10,18 +10,18 @@ const logFormat = printf(({ level, message, timestamp }) => {
 
 // Create logger
 const logger = createLogger({
-    level: 'info', // Log level
+    level: 'info', 
     format: combine(
         timestamp(),
-        logFormat // Use custom log format
+        logFormat 
     ),
     transports: [
-        new transports.File({ filename: 'error.log', level: 'error' }), // Log only errors to error.log
-        new transports.File({ filename: 'combined.log' }) // Log all messages to combined.log
+        new transports.File({ filename: 'error.log', level: 'error' }), 
+        new transports.File({ filename: 'combined.log' }) 
     ]
 });
 
-// If we're not in production, log to the `console` with the format:
+
 if (process.env.NODE_ENV !== 'production') {
     logger.add(new transports.Console({
         format: format.simple()

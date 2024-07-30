@@ -7,7 +7,7 @@ import '../assets/styles/offboarding.css';
 function Offboarding() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
-    const [employeeInfo, setEmployeeInfo] = useState(null); // This will hold employee data
+    const [employeeInfo, setEmployeeInfo] = useState(null); 
     const [removeFromGroups, setRemoveFromGroups] = useState(false);
     const [removeFromApps, setRemoveFromApps] = useState(false);
 
@@ -16,9 +16,9 @@ function Offboarding() {
 
     const handleSubmit = () => {
         if (window.confirm("Are you sure you want to off-board this user? Once off-boarded, this user will no longer have access")) {
-        // Submit off-boarding logic here
+
         console.log('Employee off-boarded', { email, removeFromGroups, removeFromApps });
-        // Navigate back to the home page
+
         navigate('/home');
         }
     };

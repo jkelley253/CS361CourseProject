@@ -1,12 +1,12 @@
 // cs361courseproject / frontend / src / components / Home.js
 
-import React from 'react'; // import react module from react library 
-import Navbar from './Navbar'; // import Navbar component from Navbar.js file 
-import '../assets/styles/home.css'; // import style.css file from assets/styles folder 
+import React from 'react'; 
+import Navbar from './Navbar'; 
+import '../assets/styles/home.css'; 
 
-function Home() { // define Home component 
-    return ( // return the following content 
-        // create a div element with class name home-container 
+function Home() { 
+    return ( 
+        
         <div className="home-container"> 
             <Navbar /> 
             <div className="welcome-message">
@@ -22,4 +22,4 @@ function Home() { // define Home component
     );
 }
 
-export default Home; // export Home component to be used in other files 
+export default Home; 

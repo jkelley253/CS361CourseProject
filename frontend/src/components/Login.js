@@ -1,15 +1,15 @@
 // cs361courseproject / frontend / src / components / Login.js
 
-import React from 'react'; // Import React library 
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
-import '../assets/styles/login.css'; // Import style.css file
+import React from 'react';  
+import { useNavigate } from 'react-router-dom'; 
+import '../assets/styles/login.css'; 
 
 function Login() {
-    const navigate = useNavigate(); // Use navigate function from react-router-dom
+    const navigate = useNavigate(); 
 
-    const handleLogin = () => { // Handle login function
+    const handleLogin = () => { 
         
-        navigate('/home'); // Navigate to home page
+        navigate('/home'); 
     }; 
 
     return (
@@ -25,4 +25,4 @@ function Login() {
     );
 }
 
-export default Login; // Export Login function
+export default Login; 

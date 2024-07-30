@@ -1,13 +1,13 @@
 // cd361courseproject / frontend / src / components / Onboarding.js
 
-import React, { useState } from 'react'; // useState to manage the form data 
-import { useNavigate } from 'react-router-dom'; // useNavigate to navigate to the next page 
-import Checkbox from './Checkbox'; // import Checkbox component
-import '../assets/styles/onboarding.css'; // import the css file 
+import React, { useState } from 'react'; 
+import { useNavigate } from 'react-router-dom'; 
+import Checkbox from './Checkbox'; 
+import '../assets/styles/onboarding.css';  
 
-function Onboarding () { // create the Onboarding function 
-    const navigate = useNavigate(); // navigate to the next page 
-    const [formData, setFormData] = useState({ // set the form data 
+function Onboarding () {  
+    const navigate = useNavigate(); 
+    const [formData, setFormData] = useState({ 
         name: '',
         email: '',
         title: '',
