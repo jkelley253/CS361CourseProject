@@ -4,10 +4,12 @@ const User = require('../models/users'); //import User model from models folder
 
 exports.createUser = async (req, res, next) => { //function to create a new user 
     try {  //try block to catch any errors 
+        logger.info('Creating a new user'); // Log an informational message
         const newUser = new User(req.body); //create a new user object with the request body
         const savedUser = await newUser.save(); //save the new user object to the database 
         res.status(201).json(savedUser); //send a response with the saved user object
     } catch (err) { //catch block to handle any errors
+        logger.error(`Error creating user: ${error.message}`); // Log an error message
         next(err); //pass the error to the next middleware function
     }
 };
@@ -54,5 +56,23 @@ exports.deleteUser = async (req, res, next) => { //function to delete a user
         res.status(200).json({ message: 'User deleted' }); //send a response with a success message 
     } catch (err) { //catch block to handle any errors 
         next(err); // pass the error to the next middleware function
+    }
+};
+
+// Function to onboard a new employee
+exports.onboardEmployee = async (req, res, next) => {
+    try {
+        const { name, email, title, team, manager, groups, additionalAppAccess } = req.body;
+
+      // Check if all required fields are present
+        if (!name || !email || !title || !team || !manager) {
+            return res.status(400).json({ message: 'All required fields must be filled out' });
+        }
+
+        const newEmployee = new User({ name, email, title, team, manager, groups, additionalAppAccess });
+        const savedEmployee = await newEmployee.save();
+        res.status(201).json(savedEmployee);
+    } catch (error) {
+        next(error);
     }
 };
