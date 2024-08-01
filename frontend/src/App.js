@@ -7,6 +7,7 @@ import Offboarding from './components/Offboarding';
 import EmployeeMaintenance from './components/EmployeeMaintenance';
 import AppMaintenance from './components/AppMaintenance';
 import OrgChart from './components/OrgChart';
+
 import './assets/style.css';
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/employee-maintenance" element={<EmployeeMaintenance />} />
         <Route path="/app-maintenance" element={<AppMaintenance />} />
         <Route path="/org-chart" element={<OrgChart />} />
+
       </Routes>
     </Router>
   );
