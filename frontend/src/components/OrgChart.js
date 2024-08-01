@@ -1,59 +1,50 @@
-// CS361courseproject / Frontend/ src/ components / OrgChart.js
-
-import React, { useState } from 'react';
+// frontend/src/components/OrgChart.js
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../assets/styles/orgchart.css';
+import '../assets/style.css';
 
-function OrgChart() {
+const OrgChart = () => {
+    const [employees, setEmployees] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
-    const [searchTerm, setSearchTerm] = useState('');
-    const [orgChartData, setOrgChartData] = useState([
-        // Sample data, replace with actual data fetching
-        { manager: 'Alice', employees: ['Bob', 'Charlie', 'David'] },
-        { manager: 'Eve', employees: ['Frank', 'Grace', 'Heidi'] },
-    ]);
 
-    const handleSearch = () => {
-        console.log("Searching for:", searchTerm);
-    };
+    useEffect(() => {
+        const fetchEmployees = async () => {
+            try {
+                const response = await axios.get('http://localhost:5070/api/users/orgchart/active');
+                setEmployees(response.data);
+            } catch (error) {
+                console.error('Error fetching active employees', error);
+                setError('Error fetching employee data.');
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    const handleReset = () => {
-        setSearchTerm('');
-    };
+        fetchEmployees();
+    }, []);
 
     return (
-        <div className="orgchart-container">
-            <div className="orgchart-header">
-                <button className="home-button" onClick={() => navigate('/home')}>Home</button>
-                <h1>Org Chart</h1>
-                <button className="reset-button" onClick={handleReset}>Reset</button>
-            </div>
-            <div className="search-container">
-                <input
-                    type="text"
-                    placeholder="Search by employee email"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button className="search-button" onClick={handleSearch}>Search</button>
-            </div>
-            <div className="orgchart-display">
-                {orgChartData.map((data, index) => (
-                    <div key={index} className="manager-section">
-                        <h3>Manager: {data.manager}</h3>
-                        <ul>
-                            {data.employees.map((employee, index) => (
-                                <li key={index}>{employee}</li>
-                            ))}
-                        </ul>
-                    </div>
+        <div>
+            <h2>Org Chart - Active Employees</h2>
+            {loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
+            <ul>
+                {employees.map(employee => (
+                    <li key={employee._id}>
+                        <strong>Name: {employee.firstName} {employee.lastName}</strong><br />
+                        <span>Email: {employee.email}</span><br />
+                        <span>Title: {employee.title}</span><br />
+                        <span>Team: {employee.team}</span><br />
+                        <span>Manager: {employee.manager}</span><br />
+                    </li>
                 ))}
-            </div>
-            <div className="orgchart-footer">
-                <p>Search for an employee by typing in their email. To reset your view press the reset button in the top right.</p>
-            </div>
+            </ul>
+            <button onClick={() => navigate('/')}>Home</button>
         </div>
     );
-}
+};
 
 export default OrgChart;

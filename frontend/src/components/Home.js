@@ -1,17 +1,39 @@
-// cs361courseproject / frontend / src / components / Home.js
+// frontend/src/components/Home.js
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../assets/style.css';
 
-import React from 'react'; 
-import Navbar from './Navbar'; 
-import '../assets/styles/home.css'; 
+const Home = () => {
+    const navigate = useNavigate();
 
-function Home() { 
-    return ( 
-        
-        <div className="home-container"> 
-            <Navbar /> 
-            <div className="welcome-message">
-                <h1> Welcome to AI Org!</h1>
-            </div>
+    const navigateToOnboarding = () => {
+        navigate('/onboarding');
+    };
+
+    const navigateToOffboarding = () => {
+        navigate('/offboarding');
+    };
+
+    const navigateToEmployeeMaintenance = () => {
+        navigate('/employee-maintenance');
+    };
+
+    const navigateToAppMaintenance = () => {
+        navigate('/app-maintenance');
+    };
+    
+    const navigateToOrgChart = () => {
+        navigate('/org-chart');
+    };
+
+    return (
+        <div className="home">
+            <h1>Welcome to the Onboarding System</h1>
+            <button onClick={navigateToOnboarding}>Onboard New Employee</button>
+            <button onClick={navigateToOffboarding}>Offboard Employee</button>
+            <button onClick={navigateToEmployeeMaintenance}>Employee Maintenance</button>
+            <button onClick={navigateToAppMaintenance}>App Maintenance</button>
+            <button onClick={navigateToOrgChart}>Org Chart</button>
             <div className="bottom-instructions">
                 <p>To begin onboarding a new employee select the onboarding tab </p>
                 <p>To begin off-boarding an employee select the off-boarding tab </p>
@@ -20,6 +42,6 @@ function Home() {
             </div>
         </div>
     );
-}
+};
 
-export default Home; 
+export default Home;

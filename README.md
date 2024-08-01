@@ -7,6 +7,8 @@
 4. npm install dotenv
 5. npm install winston
 6. npm install --save-dev nodemon
+7. npm install cors
+
 
 
 
