@@ -1,133 +1,137 @@
-// cd361courseproject / frontend / src / components / Onboarding.js
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import '../assets/style.css';
 
-import React, { useState } from 'react'; 
-import { useNavigate } from 'react-router-dom'; 
-import Checkbox from './Checkbox'; 
-import '../assets/styles/onboarding.css';  
-
-function Onboarding () {  
-    const navigate = useNavigate(); 
-    const [formData, setFormData] = useState({ 
-        name: '',
+const Onboarding = () => {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
         email: '',
-        title: '',
+        manager: '',
         team: '',
-        manager: '', 
-        groups: [], 
-        additionalAppAccess: [],
+        title: '',
+        status: 'active',
+        groups: [],
+        apps: [],
     });
+
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
-    
-    const handleCheckboxChange = (name, value) => {
-        setFormData((prevState) => {
-            const currentValues = prevState[name];
-            if (currentValues.includes(value)) {
-                return {
-                    ...prevState,
-                    [name]: currentValues.filter((item) => item !== value),
-                };
-            } else {
-                return {
-                    ...prevState,
-                    [name]: [...currentValues, value],
-                };
-            }
-        });
-    };
-    
-    const handleSubmit = () => {
-        if (!formData.name || !formData.email || !formData.title || !formData.team || !formData.manager) {
-            alert("Please fill out all required fields");
-            return;
-        }
 
-        const confirmSubmission = window.confirm("You are about to onboard this employee. Are you sure you want to proceed?");
-        if (confirmSubmission) {
-            fetch('/api/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Success:', data);
-                alert("Employee onboarded successfully");
-                navigate('/home');
-            })
-            .catch((error) => {
-                console.error('Error:', error);
+    const handleCheckboxChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: prev[name].includes(value)
+                ? prev[name].filter((item) => item !== value)
+                : [...prev[name], value],
+        }));
+    };
+
+    const handleConfirmSubmit = (e) => {
+        e.preventDefault();
+        setShowConfirmation(true);
+    };
+
+    const handleSubmit = async () => {
+        try {
+            await axios.post('http://localhost:5070/api/users', formData);
+            alert('Employee onboarded successfully');
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                manager: '',
+                team: '',
+                title: '',
+                status: 'active',
+                groups: [],
+                apps: [],
             });
+            navigate('/');
+        } catch (error) {
+            console.error('Error onboarding employee', error);
+            alert('There was an error onboarding the employee.');
         }
+        setShowConfirmation(false);
     };
 
-    const groupOptions = ['Dev', 'SRE', 'Product', 'Marketing'];
-    const appAccessOptions = ['Slack', 'Jira', '1password', 'Github'];
+    const handleCancel = () => {
+        setShowConfirmation(false);
+    };
 
-    return ( 
-        <div className="onboarding-container">
-            <div className="onboarding-header">
-                <button className="home-button" onClick={() => navigate('/home')}>Home</button>
-                <h1>Onboarding</h1>
-                <button className="submit-button" onClick={handleSubmit}>Submit</button>
-            </div>
-            <div className="form-container">
-                <label>Name</label>
-                <input type="text" name="name" value={formData.name} onChange={handleChange} />
-                
-                <label>Email</label>
-                <input type="email" name="email" value={formData.email} onChange={handleChange} />
-                
-                <label>Title</label>
-                <input type="text" name="title" value={formData.title} onChange={handleChange} />
-                
-                <label>Team</label>
-                <input type="text" name="team" value={formData.team} onChange={handleChange} />
-                
-                <label>Manager</label>
-                <input type="text" name="manager" value={formData.manager} onChange={handleChange} />
-        
-                <div className="checkbox-container">
-                    <div className="checkbox-group">
-                        <h3>Groups</h3>
-                        {groupOptions.map((option) => (
-                            <Checkbox
-                                key={option}
-                                label={option}
-                                isSelected={formData.groups.includes(option)}
-                                onCheckboxChange={() => handleCheckboxChange('groups', option)}
-                            />
-                        ))}
-                    </div>
+    const goToHome = () => {
+        navigate('/');
+    };
 
-                    <div className="checkbox-group">
-                        <h3>Additional App Access</h3>
-                        {appAccessOptions.map((option) => (
-                            <Checkbox
-                                key={option}
-                                label={option}
-                                isSelected={formData.additionalAppAccess.includes(option)}
-                                onCheckboxChange={() => handleCheckboxChange('additionalAppAccess', option)}
+    return (
+        <div>
+            <form className="onboarding-form" onSubmit={handleConfirmSubmit}>
+                <h2>Onboard New Employee</h2>
+                <input name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" required />
+                <input name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" required />
+                <input name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
+                <input name="manager" value={formData.manager} onChange={handleChange} placeholder="Manager" />
+                <input name="title" value={formData.title} onChange={handleChange} placeholder="Title" required />
+                <input name="team" value={formData.team} onChange={handleChange} placeholder="Team" />
+                <label>Status</label>
+                <select name="status" value={formData.status} onChange={handleChange}>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+                <fieldset>
+                    <legend>Groups</legend>
+                    {['dev', 'product', 'SRE', 'marketing'].map((group) => (
+                        <label key={group}>
+                            <input
+                                type="checkbox"
+                                name="groups"
+                                value={group}
+                                checked={formData.groups.includes(group)}
+                                onChange={handleCheckboxChange}
                             />
-                        ))}
-                    </div>
+                            {group}
+                        </label>
+                    ))}
+                </fieldset>
+                <fieldset>
+                    <legend>Apps</legend>
+                    {['Slack', 'Jira', '1password', 'GitHub'].map((app) => (
+                        <label key={app}>
+                            <input
+                                type="checkbox"
+                                name="apps"
+                                value={app}
+                                checked={formData.apps.includes(app)}
+                                onChange={handleCheckboxChange}
+                            />
+                            {app}
+                        </label>
+                    ))}
+                </fieldset>
+                <button type="submit">Submit</button>
+                <button type="button" onClick={goToHome}>Home</button>
+
+                <div className="onboarding-footer">
+                    <p>To onboard a new employee, fill out the info above. Ensure all required fields are complete. Once done, press submit to finalize.</p>
                 </div>
-            </div>
-            <div className="onboarding-footer">
-                <p> To onboard a new employee fill out the info above, ensure all required fields are complete. Once done press submit to finalize</p>
-            </div>
+            </form>
+
+            {showConfirmation && (
+                <div className="confirmation-popup">
+                    <p>You are about to submit this employee to be onboarded. Are you sure you're ready to continue?</p>
+                    <button onClick={handleSubmit}>Continue</button>
+                    <button onClick={handleCancel}>Cancel</button>
+                </div>
+            )}
         </div>
     );
-}
+};
 
 export default Onboarding;

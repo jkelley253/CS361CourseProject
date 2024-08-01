@@ -1,76 +1,97 @@
-// CS361courseproject/ Frontend/ src/ components / Offboarding.js
-
+// frontend/src/components/Offboarding.js
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../assets/styles/offboarding.css';
+import '../assets/style.css';
 
-function Offboarding() {
-    const navigate = useNavigate();
+
+const Offboarding = () => {
     const [email, setEmail] = useState('');
-    const [employeeInfo, setEmployeeInfo] = useState(null); 
-    const [removeFromGroups, setRemoveFromGroups] = useState(false);
-    const [removeFromApps, setRemoveFromApps] = useState(false);
+    const [user, setUser] = useState(null);
+    const [error, setError] = useState('');
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const navigate = useNavigate();
 
-    const handleSearch = () => {
+    const handleInputChange = (e) => {
+        setEmail(e.target.value);
     };
 
-    const handleSubmit = () => {
-        if (window.confirm("Are you sure you want to off-board this user? Once off-boarded, this user will no longer have access")) {
-
-        console.log('Employee off-boarded', { email, removeFromGroups, removeFromApps });
-
-        navigate('/home');
+    const handleSearch = async () => {
+        try {
+            const response = await axios.get(`http://localhost:5070/api/users/${email}`);
+            setUser(response.data);
+            setError('');
+        } catch (error) {
+            console.error('Error fetching user information', error);
+            setError('User not found or another error occurred.');
+            setUser(null);
         }
     };
 
+    const handleOffboardRequest = () => {
+        setShowConfirmation(true);
+    };
+
+    const handleOffboard = async () => {
+        try {
+            await axios.delete(`http://localhost:5070/api/users/offboard/${email}`);
+            alert('Employee offboarded successfully');
+            navigate('/');
+        } catch (error) {
+            console.error('Error offboarding employee', error);
+            alert('There was an error offboarding the employee.');
+        }
+        setShowConfirmation(false);
+    };
+
+    const handleCancel = () => {
+        setShowConfirmation(false);
+    };
+
     return (
-        <div className="offboarding-container">
-            <div className="offboarding-header">
-                <button className="home-button" onClick={() => navigate('/home')}>Home</button>
-                <h1>Off-boarding</h1>
-                <button className="submit-button" onClick={handleSubmit}>Submit</button>
-            </div>
-            <div className="search-container">
-                <input
-                    type="text"
-                    placeholder="Enter employee email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <button className="search-button" onClick={handleSearch}>Search</button>
-            </div>
-            {employeeInfo && (
-                <div className="employee-info">
-                    <h2>Employee Information</h2>
-                    <p><strong>Name:</strong> {employeeInfo.name}</p>
-                    <p><strong>Email:</strong> {employeeInfo.email}</p>
-                    <p><strong>Groups:</strong> {employeeInfo.groups.join(', ')}</p>
-                    <p><strong>Apps:</strong> {employeeInfo.apps.join(', ')}</p>
+        <div>
+            <h2>Offboard Employee</h2>
+            <input
+                type="text"
+                placeholder="Enter Employee Email"
+                value={email}
+                onChange={handleInputChange}
+            />
+            <button onClick={handleSearch}>Search</button>
+
+            {error && <p>{error}</p>}
+
+            {user && (
+                    <div>
+                    <h3>Employee Information</h3>
+                    <p>Name: {user.firstName} {user.lastName}</p>
+                    <p>Email: {user.email}</p>
+                    <p>Manager: {user.manager}</p>
+                    <p>Team: {user.team}</p>
+                    <p>Status: {user.status}</p>
+                    <p>Groups: {user.groups.join(', ')}</p>
+                    <p>Apps: {user.apps.join(', ')}</p>
+
+                    <button onClick={handleOffboardRequest}>Confirm Offboarding</button>
+                    <button onClick={() => setUser(null)}>Cancel</button>
                 </div>
             )}
-            <div className="checkbox-container">
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={removeFromGroups}
-                        onChange={(e) => setRemoveFromGroups(e.target.checked)}
-                    />
-                    Remove user from groups
-                </label>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={removeFromApps}
-                        onChange={(e) => setRemoveFromApps(e.target.checked)}
-                    />
-                    Remove user from apps
-                </label>
-            </div>
+
+            {showConfirmation && (
+                <div className="confirmation-popup">
+                    <p>You are about to offboard this user. Are you sure you want to continue?</p>
+                    <button onClick={handleOffboard}>Continue</button>
+                    <button onClick={handleCancel}>Cancel</button>
+                </div>
+            )}
+
             <div className="offboarding-footer">
-                <p>To off-board an employee type in their email and select yes to removing the employee from the groups and apps. Once done the employee will no longer have access.</p>
+                <p>To off-board an employee, type in their email and select yes to removing the employee from the groups and apps. Once done, the employee will no longer have access.</p>
             </div>
+            
+            <button onClick={() => navigate('/')}>Home</button>
         </div>
     );
-}
+};
 
 export default Offboarding;

@@ -1,7 +1,0 @@
-
-
-{
-    "port": 5050, 
-    "mongoURI": "mongodb://localhost:27017/cs361"
-
-}
