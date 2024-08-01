@@ -26,6 +26,7 @@ const Home = () => {
         navigate('/org-chart');
     };
 
+
     return (
         <div className="home">
             <h1>Welcome to the Onboarding System</h1>
@@ -34,6 +35,7 @@ const Home = () => {
             <button onClick={navigateToEmployeeMaintenance}>Employee Maintenance</button>
             <button onClick={navigateToAppMaintenance}>App Maintenance</button>
             <button onClick={navigateToOrgChart}>Org Chart</button>
+
             <div className="bottom-instructions">
                 <p>To begin onboarding a new employee select the onboarding tab </p>
                 <p>To begin off-boarding an employee select the off-boarding tab </p>
