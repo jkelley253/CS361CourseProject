@@ -54,7 +54,7 @@ const Onboarding = () => {
                 groups: [],
                 apps: [],
             });
-            navigate('/');
+            navigate('/home');
         } catch (error) {
             console.error('Error onboarding employee', error);
             alert('There was an error onboarding the employee.');
@@ -67,7 +67,7 @@ const Onboarding = () => {
     };
 
     const goToHome = () => {
-        navigate('/');
+        navigate('/home');
     };
 
     return (
@@ -78,8 +78,18 @@ const Onboarding = () => {
                 <input name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" required />
                 <input name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
                 <input name="manager" value={formData.manager} onChange={handleChange} placeholder="Manager" />
-                <input name="title" value={formData.title} onChange={handleChange} placeholder="Title" required />
                 <input name="team" value={formData.team} onChange={handleChange} placeholder="Team" />
+                <label>Title</label>
+                <select name="title" value={formData.title} onChange={handleChange} required>
+                    <option value="">Select Title</option>
+                    {[
+                        'CEO', 'Dev Director', 'Product Director', 'SRE Director', 'Marketing Director', 
+                        'Dev Manager', 'Product Manager', 'SRE Manager', 'Marketing Manager', 
+                        'Dev', 'Product', 'SRE', 'Marketing'
+                    ].map(title => (
+                        <option key={title} value={title}>{title}</option>
+                    ))}
+                </select>
                 <label>Status</label>
                 <select name="status" value={formData.status} onChange={handleChange}>
                     <option value="active">Active</option>

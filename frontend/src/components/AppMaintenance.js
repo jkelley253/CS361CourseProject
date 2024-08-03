@@ -96,15 +96,10 @@ const AppMaintenance = () => {
                     </button>
                 </div>
             )}
-            <div className="maintenance-footer">
-                <p>To perform maintenance on an application, type in the app name and press search. Select who you would like to remove and submit.</p>
-            </div>
 
-            <div className="app-instruction-footer">
-                <p>Select from current apps: Slack, Jira, 1password, GitHub. App search is case sensitive.</p>
-            </div>
 
-            <button onClick={() => navigate('/')}>Home</button>
+
+            <button onClick={() => navigate('/home')}>Home</button>
 
             {showConfirmation && (
                 <div className="confirmation-popup">
@@ -113,6 +108,12 @@ const AppMaintenance = () => {
                     <button onClick={handleCancel}>Cancel</button>
                 </div>
             )}
+            <div className="maintenance-footer">
+                <p>To perform maintenance on an application, type in the app name and press search. Select who you would like to remove and submit.</p>
+            </div>
+            <div className="app-instruction-footer">
+                <p>Select from current apps: Slack, Jira, 1password, GitHub. App search is case sensitive.</p>
+            </div>
         </div>
     );
 };

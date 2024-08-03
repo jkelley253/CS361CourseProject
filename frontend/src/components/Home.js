@@ -26,16 +26,19 @@ const Home = () => {
         navigate('/org-chart');
     };
 
+    const handleLogout = () => {
+        navigate('/login'); 
+    };
 
     return (
         <div className="home">
-            <h1>Welcome to the Onboarding System</h1>
+            <h1>Welcome!</h1>
             <button onClick={navigateToOnboarding}>Onboard New Employee</button>
             <button onClick={navigateToOffboarding}>Offboard Employee</button>
             <button onClick={navigateToEmployeeMaintenance}>Employee Maintenance</button>
             <button onClick={navigateToAppMaintenance}>App Maintenance</button>
             <button onClick={navigateToOrgChart}>Org Chart</button>
-
+            <button onClick={handleLogout} className="logout-button">Logout</button>
             <div className="bottom-instructions">
                 <p>To begin onboarding a new employee select the onboarding tab </p>
                 <p>To begin off-boarding an employee select the off-boarding tab </p>
