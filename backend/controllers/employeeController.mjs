@@ -1,7 +1,7 @@
 // controllers/employeeController.mjs
 import User from '../models/User.mjs';
 
-// Controller method to get all active employees
+// Controller to get all active employees
 const getActiveEmployees = async (req, res) => {
     try {
         const activeEmployees = await User.find({ status: 'active' });

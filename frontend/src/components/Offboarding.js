@@ -36,7 +36,7 @@ const Offboarding = () => {
         try {
             await axios.delete(`http://localhost:5070/api/users/offboard/${email}`);
             alert('Employee offboarded successfully');
-            navigate('/');
+            navigate('/home');
         } catch (error) {
             console.error('Error offboarding employee', error);
             alert('There was an error offboarding the employee.');
@@ -66,6 +66,7 @@ const Offboarding = () => {
                     <h3>Employee Information</h3>
                     <p>Name: {user.firstName} {user.lastName}</p>
                     <p>Email: {user.email}</p>
+                    <p>Title: {user.title}</p>
                     <p>Manager: {user.manager}</p>
                     <p>Team: {user.team}</p>
                     <p>Status: {user.status}</p>
@@ -84,12 +85,10 @@ const Offboarding = () => {
                     <button onClick={handleCancel}>Cancel</button>
                 </div>
             )}
-
+            <button onClick={() => navigate('/home')}>Home</button>
             <div className="offboarding-footer">
                 <p>To off-board an employee, type in their email and select yes to removing the employee from the groups and apps. Once done, the employee will no longer have access.</p>
             </div>
-            
-            <button onClick={() => navigate('/')}>Home</button>
         </div>
     );
 };

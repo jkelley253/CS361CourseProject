@@ -1,4 +1,5 @@
 // frontend/src/components/EmployeeMaintenance.js
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +14,7 @@ const EmployeeMaintenance = () => {
     const navigate = useNavigate();
 
     const handleInputChange = (e) => {
-        setEmail(e.target.value);
+        setEmail(e.target.value.toLowerCase());
     };
 
     const handleSearch = async () => {
@@ -68,6 +69,7 @@ const EmployeeMaintenance = () => {
         setShowConfirmation(false);
     };
 
+
     return (
         <div>
             <h2>Employee Maintenance</h2>
@@ -103,6 +105,15 @@ const EmployeeMaintenance = () => {
                         />
                     </label>
                     <label>
+                        Email:
+                        <input
+                            type="text"
+                            name="email"
+                            value={employee.email}
+                            onChange={handleInputChangeEmployee}
+                        />
+                    </label>
+                    <label>
                         Manager:
                         <input
                             type="text"
@@ -120,6 +131,17 @@ const EmployeeMaintenance = () => {
                             onChange={handleInputChangeEmployee}
                         />
                     </label>
+                    <label>Title</label>
+                    <select name="title" value={employee.title} onChange={handleInputChangeEmployee} required>
+                        <option value="">Select Title</option>
+                        {[
+                            'CEO', 'Dev Director', 'Product Director', 'SRE Director', 'Marketing Director', 
+                            'Dev Manager', 'Product Manager', 'SRE Manager', 'Marketing Manager', 
+                            'Dev', 'Product', 'SRE', 'Marketing'
+                        ].map(title => (
+                            <option key={title} value={title}>{title}</option>
+                        ))}
+                    </select>
                     <label>
                         Status:
                         <select name="status" value={employee.status} onChange={handleInputChangeEmployee}>
@@ -176,7 +198,7 @@ const EmployeeMaintenance = () => {
                         ))}
                     </fieldset>
                     <button onClick={handleUpdateRequest}>Update Employee</button>
-                    <button onClick={() => navigate('/')}>Home</button>
+                    <button onClick={() => navigate('/home')}>Home</button>
                 </div>
             )}
 
@@ -187,11 +209,10 @@ const EmployeeMaintenance = () => {
                     <button onClick={handleCancel}>Cancel</button>
                 </div>
             )}
-            
+            <button onClick={() => navigate('/home')}>Home</button>
             <div className="maintenance-footer">
                 <p>To perform maintenance on an employee, type in their email and select yes to removing the employee from the groups and apps. Once done, the employee will no longer have access.</p>
             </div>
-            <button onClick={() => navigate('/')}>Home</button>
         </div>
     );
 };

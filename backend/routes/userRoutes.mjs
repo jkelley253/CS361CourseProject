@@ -10,6 +10,7 @@ router.post('/', UserController.createUser);
 // Route to get user by email
 router.get('/:email', UserController.getUserByEmail);
 
+// Route to get all active employees
 router.get('/orgchart/active', UserController.getActiveEmployees);
 
 // Route to update a user by email

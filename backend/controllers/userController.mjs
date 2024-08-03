@@ -1,6 +1,7 @@
 // controllers/userController.mjs
 import User from '../models/User.mjs';
 
+// Controller to create a new user
 const createUser = async (req, res) => {
     try {
         const newUser = new User(req.body);
@@ -11,6 +12,7 @@ const createUser = async (req, res) => {
     }
 };
 
+// Controller to get user by email
 const getUserByEmail = async (req, res) => {
     try {
         const { email } = req.params;
@@ -25,7 +27,7 @@ const getUserByEmail = async (req, res) => {
     }
 };
 
-// Controller method to get all active employees
+// Controller to get all active employees
 const getActiveEmployees = async (req, res) => {
     try {
         const activeEmployees = await User.find({ status: 'active' });
@@ -36,6 +38,7 @@ const getActiveEmployees = async (req, res) => {
     }
 };
 
+// Controller to update a user by email
 const updateUserByEmail = async (req, res) => {
     try {
         const { email } = req.params;
@@ -50,6 +53,7 @@ const updateUserByEmail = async (req, res) => {
     }
 };
 
+// Controller to offboard an employee
 const offboardEmployee = async (req, res) => {
     try {
         const { email } = req.params;

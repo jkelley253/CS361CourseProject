@@ -7,20 +7,21 @@ import Offboarding from './components/Offboarding';
 import EmployeeMaintenance from './components/EmployeeMaintenance';
 import AppMaintenance from './components/AppMaintenance';
 import OrgChart from './components/OrgChart';
-
+import Login from './components/Login';
 import './assets/style.css';
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/offboarding" element={<Offboarding />} />
         <Route path="/employee-maintenance" element={<EmployeeMaintenance />} />
         <Route path="/app-maintenance" element={<AppMaintenance />} />
         <Route path="/org-chart" element={<OrgChart />} />
-
       </Routes>
     </Router>
   );
