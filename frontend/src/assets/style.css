@@ -34,6 +34,7 @@
     color: white;
     border: none;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .login-container button:hover {
@@ -47,15 +48,85 @@
     line-height: 1.5;
 }
 
+/* CreateAccount.js */
+.create-account-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.create-account-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.create-account-container button {
+    margin-top: 10px;
+}
+
+.create-account-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+
+
+
 /* Home.js */
-.home {
+.home-container {
     text-align: center;
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 40px;
     padding: 20px;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.notifications-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 300px;
+    min-width: 200px;
+    background-color: #f9f9f9;
+}
+
+.notifications-box h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.notifications-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.notifications-box li {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.notifications-box li h3 {
+    margin: 0 0 5px 0;
+}
+
+.notifications-box li p {
+    margin: 0;
 }
 
 .home h1 {
@@ -74,6 +145,7 @@
     color: white;
     border: none;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 .logout-button:hover {
@@ -300,4 +372,50 @@
     max-width: 400px;
     margin: auto;
     text-align: left;
+}
+
+
+/* Notifications.js */
+button {
+    margin-top: 10px;
+}
+
+.notifications-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notifications-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notifications-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.notifications-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.notifications-container li {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 500px;
+}
+
+.notifications-container h3 {
+    margin: 0 0 10px 0;
+}
+
+.notifications-container textarea {
+    resize: none;
 }

@@ -41,7 +41,8 @@ const Onboarding = () => {
 
     const handleSubmit = async () => {
         try {
-            await axios.post('http://localhost:5070/api/users', formData);
+            const response = await axios.post('http://localhost:5070/api/users', formData);
+            console.log(response);
             alert('Employee onboarded successfully');
             setFormData({
                 firstName: '',

@@ -1,4 +1,5 @@
 // backend/server.mjs
+
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -21,13 +22,15 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // Routes
 import userRoutes from './routes/userRoutes.mjs';
-import appRoutes from './routes/appRoutes.mjs';
 import employeeRoutes from './routes/employeeRoutes.mjs';
-
+import appRoutes from './routes/appRoutes.mjs';
+import userAccountRoutes from './routes/userAccountRoutes.mjs';
 
 app.use('/api/users', userRoutes);
-app.use('/api/apps', appRoutes);
 app.use('/api/employees', employeeRoutes);
+app.use('/api/apps', appRoutes);
+app.use('/api/create-account', userAccountRoutes); 
+app.use('/api/login', userAccountRoutes);
 
 // Start Server
 app.listen(port, () => {
