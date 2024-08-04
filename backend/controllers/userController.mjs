@@ -1,5 +1,8 @@
 // controllers/userController.mjs
+
+// Imports 
 import User from '../models/User.mjs';
+
 
 // Controller to create a new user
 const createUser = async (req, res) => {
