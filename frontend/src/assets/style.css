@@ -419,3 +419,7 @@ button {
 .notifications-container textarea {
     resize: none;
 }
+
+select {
+    margin-top: 10px;
+}

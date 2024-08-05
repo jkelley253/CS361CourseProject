@@ -73,6 +73,7 @@ const Home = () => {
                             <li key={notification._id}>
                                 <h3>{notification.title}</h3>
                                 <p>{notification.message}</p>
+                                <p><strong>Type:</strong> {notification.type}</p>
                             </li>
                         ))}
                     </ul>

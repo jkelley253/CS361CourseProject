@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import './notificationScheduler.mjs'; 
 
 dotenv.config();
 
