@@ -4,7 +4,7 @@ import Notification from '../models/Notification.mjs';
 
 export const createNotification = async (req, res) => {
     try {
-        const notification = new Notification(req.body);
+        const notification = new Notification({ ...req.body, type: req.body.type || 'general' }); // Default type is 'general'
         await notification.save();
         res.status(201).json(notification);
     } catch (error) {
@@ -50,7 +50,8 @@ export const deleteNotification = async (req, res) => {
 export const pushNotification = async (req, res) => {
     try {
         const notifications = await Notification.find();
-
+        // Logic to push notifications to users
+        // This is a placeholder and should be replaced with actual push logic
         res.status(200).json({ message: 'Notifications pushed successfully', notifications });
     } catch (error) {
         res.status(500).json({ message: error.message });
