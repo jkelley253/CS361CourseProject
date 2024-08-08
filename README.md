@@ -112,7 +112,7 @@ MONGODB_URI=mongodb+srv://user1:test@cluster0.yffalho.mongodb.net/?retryWrites=t
 ## Technologies Used
 - ** frontend: React, Axios, CSS
 - ** backend: Node.js, Express, Mongoose, MongoDB
-- ** Notifications: Node.js, Express, Mongoose, MongoDB, node-cron
+
 
 
 ## Microservice A UML

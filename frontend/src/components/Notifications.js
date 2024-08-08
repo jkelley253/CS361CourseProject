@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../assets/style.css';
+import '../assets/notification.css';
 
 const Notifications = () => {
     const [notifications, setNotifications] = useState([]);

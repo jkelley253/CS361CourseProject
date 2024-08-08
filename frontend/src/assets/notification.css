@@ -1,0 +1,48 @@
+/* Notifications.css */
+button {
+    margin-top: 10px;
+}
+
+.notifications-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notifications-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notifications-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.notifications-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.notifications-container li {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 500px;
+}
+
+.notifications-container h3 {
+    margin: 0 0 10px 0;
+}
+
+.notifications-container textarea {
+    resize: none;
+}
+
+select {
+    margin-top: 10px;
+}

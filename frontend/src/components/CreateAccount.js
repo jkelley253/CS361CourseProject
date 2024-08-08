@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../assets/style.css';
+import '../assets/createAccount.css';
 
 const CreateAccount = () => {
     const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const CreateAccount = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5070/api/create-account', formData);
+            await axios.post('http://localhost:5072/api/admin/create-account', formData);
             alert('Account created successfully');
             navigate('/home');
         } catch (error) {

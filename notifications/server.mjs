@@ -32,8 +32,10 @@ const connectDB = async () => {
     }
 };
 
-// Routes
+// import routes
 import notificationRoutes from './routes/notificationRoutes.mjs';
+
+// use routes
 app.use('/api/notifications', notificationRoutes);
 
 // Start Server
