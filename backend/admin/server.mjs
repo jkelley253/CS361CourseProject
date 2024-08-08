@@ -1,5 +1,4 @@
-
-
+// admin/server.mjs
 
 import express from 'express';
 import mongoose from 'mongoose';
@@ -26,7 +25,6 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // Routes
 import userAccountRoutes from './routes/userAccountRoutes.mjs';
-
 
 // Use Routes
 app.use('/api/admin', userAccountRoutes);

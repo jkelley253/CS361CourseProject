@@ -1,8 +1,8 @@
-
+// employee/controllers/employeeController.mjs
 
 import User from '../models/User.mjs';
 
-// controller to get all active employees 
+// controller to get all active employees for orgchart
 const getActiveEmployees = async (req, res) => {
     try {
         const activeEmployees = await User.find({ status: 'active' }); 

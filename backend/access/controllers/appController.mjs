@@ -1,4 +1,5 @@
-// backend/controllers/appController.mjs
+// access/controllers/appController.mjs
+
 import User from '../models/User.mjs';
 
 // Controller to get users by app name

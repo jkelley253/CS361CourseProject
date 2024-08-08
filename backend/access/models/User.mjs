@@ -1,4 +1,4 @@
-
+// access/models/User.mjs
 
 import mongoose from 'mongoose';
 
@@ -21,8 +21,8 @@ const userSchema = new mongoose.Schema ({
             'Dev', 'Product', 'SRE', 'Marketing'
         ]
     },
-    status: { type: String, defualt: 'active'}, 
-    groups: { type: [String], enum: [ 'dev', 'product', 'sre', 'marketing'], defualt: []},
+    status: { type: String, default: 'active'}, 
+    groups: { type: [String], enum: [ 'dev', 'product', 'sre', 'marketing'], default: []},
     //created: { type: Date, default: Date.now },
     //updated: { type: Date, default: Date.now }
     apps: { type: [String], enum: [ 'Slack', 'Jira', '1password', 'Github'], default: []}, 
