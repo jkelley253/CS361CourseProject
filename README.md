@@ -112,4 +112,21 @@ MONGODB_URI=mongodb+srv://user1:test@cluster0.yffalho.mongodb.net/?retryWrites=t
 ## Technologies Used
 - ** frontend: React, Axios, CSS
 - ** backend: Node.js, Express, Mongoose, MongoDB
-- ** Notifications: Node.js, Express, Mongoose, MongoDB, node-cron
+
+
+
+## Microservice A UML
+![Screenshot 2024-08-05 at 12 24 33 PM (2)](https://github.com/user-attachments/assets/e86920fe-5ad4-4ea9-9f3c-dd12093c5661)
+
+- ** To make a request:
+- - ** Select create, update, or delete buttons
+  - the data will be stored/ removed in the MongoDB database 
+{
+  "title": "Reminder",
+  "message": "Don't forget to submit your report!",
+  "type": "general"
+}
+- ** To receive data:
+- - ** The notifcations will be posted directly to the home page 
+  GET /api/notifications: curl http://localhost:5081/api/notifications
+
