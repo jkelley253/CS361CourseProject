@@ -1,9 +1,8 @@
-
+// employee/models/User.mjs
 
 import mongoose from 'mongoose';
 
-
-// DB schema for createing a new employee 
+// DB schema for creating a new employee 
 const userSchema = new mongoose.Schema ({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true }, 
@@ -21,8 +20,8 @@ const userSchema = new mongoose.Schema ({
             'Dev', 'Product', 'SRE', 'Marketing'
         ]
     },
-    status: { type: String, defualt: 'active'}, 
-    groups: { type: [String], enum: [ 'dev', 'product', 'sre', 'marketing'], defualt: []},
+    status: { type: String, default: 'active'}, 
+    groups: { type: [String], enum: [ 'dev', 'product', 'sre', 'marketing'], default: []},
     //created: { type: Date, default: Date.now },
     //updated: { type: Date, default: Date.now }
     apps: { type: [String], enum: [ 'Slack', 'Jira', '1password', 'Github'], default: []}, 

@@ -1,7 +1,6 @@
-
+// employee/controllers/userController.mjs
 
 import User from '../models/User.mjs';
-
 
 // controller to create a new employee account
 const createUser = async (req, res) => {

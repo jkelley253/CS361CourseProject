@@ -1,4 +1,4 @@
-//backend/routes/appRoutes.mjs
+//access/routes/appRoutes.mjs
 
 import express from 'express';
 import AppController from '../controllers/appController.mjs';

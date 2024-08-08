@@ -53,7 +53,7 @@ const deleteNotification = async (req, res) => {
 };
 
 
-// controller to push notifications
+// controller to push notifications... not active yet 
 const pushNotification = async (req, res) => {
     try {
         const notifications = await Notification.find();
