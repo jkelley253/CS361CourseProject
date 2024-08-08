@@ -10,7 +10,18 @@ import OrgChart from './components/OrgChart';
 import Login from './components/Login';
 import Notifications from './components/Notifications';
 import CreateAccount from './components/CreateAccount';
+import './assets/appMaintenance.css';
+import './assets/createAccount.css';
+import './assets/home.css';
+import './assets/login.css';
+import './assets/notification.css';
+import './assets/offboarding.css';
+import './assets/onboarding.css';
+import './assets/orgchart.css';
 import './assets/style.css';
+
+
+
 
 const App = () => {
   return (

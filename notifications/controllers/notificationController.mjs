@@ -2,9 +2,10 @@
 
 import Notification from '../models/Notification.mjs';
 
-export const createNotification = async (req, res) => {
+// controller to create a notification
+const createNotification = async (req, res) => {
     try {
-        const notification = new Notification({ ...req.body, type: req.body.type || 'general' }); // Default type is 'general'
+        const notification = new Notification({ ...req.body, type: req.body.type || 'general' }); 
         await notification.save();
         res.status(201).json(notification);
     } catch (error) {
@@ -12,7 +13,8 @@ export const createNotification = async (req, res) => {
     }
 };
 
-export const getNotifications = async (req, res) => {
+// controller to get all notifications
+const getNotifications = async (req, res) => {
     try {
         const notifications = await Notification.find();
         res.status(200).json(notifications);
@@ -21,7 +23,8 @@ export const getNotifications = async (req, res) => {
     }
 };
 
-export const updateNotification = async (req, res) => {
+// controller to update a notification
+const updateNotification = async (req, res) => {
     try {
         const { id } = req.params;
         const notification = await Notification.findByIdAndUpdate(id, req.body, { new: true });
@@ -34,7 +37,9 @@ export const updateNotification = async (req, res) => {
     }
 };
 
-export const deleteNotification = async (req, res) => {
+
+// controller to delete a notification
+const deleteNotification = async (req, res) => {
     try {
         const { id } = req.params;
         const notification = await Notification.findByIdAndDelete(id);
@@ -47,13 +52,23 @@ export const deleteNotification = async (req, res) => {
     }
 };
 
-export const pushNotification = async (req, res) => {
+
+// controller to push notifications
+const pushNotification = async (req, res) => {
     try {
         const notifications = await Notification.find();
-        // Logic to push notifications to users
-        // This is a placeholder and should be replaced with actual push logic
+
         res.status(200).json({ message: 'Notifications pushed successfully', notifications });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
+};
+
+
+export default {
+    createNotification,
+    getNotifications,
+    updateNotification,
+    deleteNotification,
+    pushNotification,
 };

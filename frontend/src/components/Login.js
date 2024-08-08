@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../assets/style.css';
+import '../assets/login.css';
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -20,7 +20,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5070/api/login/login', formData);
+            const response = await axios.post('http://localhost:5072/api/admin/login', formData);
             if (response.status === 200) {
                 navigate('/home');
             }

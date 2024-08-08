@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../assets/style.css';
+import '../assets/appMaintenance.css';
 
 const AppMaintenance = () => {
     const [appName, setAppName] = useState('');
@@ -20,7 +20,7 @@ const AppMaintenance = () => {
     const handleSearch = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`http://localhost:5070/api/apps/${appName}/users`);
+            const response = await axios.get(`http://localhost:5050/api/access/${appName}/users`);
             setUsers(response.data);
             setError('');
         } catch (error) {
@@ -46,7 +46,7 @@ const AppMaintenance = () => {
 
     const handleRemoveUsers = async () => {
         try {
-            await axios.put(`http://localhost:5070/api/apps/${appName}/remove-users`, { users: selectedUsers });
+            await axios.put(`http://localhost:5050/api/access/${appName}/remove-users`, { users: selectedUsers });
             alert('Selected users have been removed from the app.');
             setSelectedUsers([]);
             handleSearch(); // Refresh the user list
